@@ -459,9 +459,9 @@
 - (NSPersistentStoreCoordinator *)createPersistentStoreCoordinator {
     NSURL *persistentStoreURL = [[self applicationDocumentsDirectory]
                                  URLByAppendingPathComponent:@"MQTTClient"];
-    DDLogInfo(@"[MQTTPersistence] Persistent store: %@", persistentStoreURL.path);
-    
-    
+    DDLogInfo(@"[MQTTPersistence] Persistent store: %@",
+              self.persistent ? persistentStoreURL.path : @"NSInMemoryStoreType");
+
     NSError *error = nil;
     NSManagedObjectModel *model = [self createManagedObjectModel];
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
